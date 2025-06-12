@@ -8,26 +8,28 @@ public class Challenge {
 
     public static void validNumber(String y) {
 
+        Scanner scanner = new Scanner(System.in);
+
         int orderNumber = 1;
+        int sum = 1;
 
         do {
-            Scanner scanner = new Scanner(System.in);
-
             System.out.println("Enter Number #" + orderNumber);
+            String nextNumber = scanner.nextLine();
 
-        if (!numberChecker(scanner.nextLine())) {
-            System.out.println("Invalid Number");
-        }
-        else {
-        orderNumber++; }
+            try {
+            int number = Integer.parseInt(nextNumber);
+                orderNumber++;
+                sum += number;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid Number");
+            }
+
         } while (orderNumber < 6);
+
+        System.out.println("The sum of the 5 numbers = " + sum);
 
         return;
     }
 
-    public static boolean numberChecker(String y) {
-
-        int x = Integer.parseInt(y);
-        return x == 15 || x == 30 || x == 45 || x == 60 || x == 75;
-    }
 }
